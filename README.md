@@ -4,10 +4,6 @@ Linux LD_PRELOAD monitoring in C, through combined Phases 6 and 7.
 The library tracks attempted mutex acquisition orders and reports complete
 **potential deadlock** cycles. A cycle is not proof that a deadlock occurs.
 
-Course: BCSE303P - Operating System Lab
-Team: Utkarsh Chandak (24BCI0156), Tanishq Lilhore (24BKT0098)
-Faculty: Dr. Ezhil Arasi V
-
 ## Build and verify
 
 Use Linux or WSL Ubuntu with GCC, GNU Make, Python 3, and GNU coreutils:
