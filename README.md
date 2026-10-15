@@ -42,11 +42,25 @@ example, `make benchmark BENCH_ARGS="--runs 7 --target-seconds .2"`.
 
 Each run creates `benchmarks/results/<timestamp>/` containing `raw.csv`,
 `calibration.csv`, `summary.csv`, `environment.json`, and `median.svg`; existing
-results are never overwritten. The verified 2026-10-15 WSL2 run is in
-`benchmarks/results/20261015T222813+0530/`. Its measured overhead ranged from
-125.48% (shared, 2 threads) to 1563.70% (ordered, 1 thread). These values include
-monitor initialization and apply only to this machine, build, and synthetic
-workload; they are not universal performance characteristics.
+results are never overwritten. The corrected, audited 2026-10-15 WSL2 run is
+in `benchmarks/results/20261015T224443+0530/`. Its measured overhead ranged from
+137.30% (shared, 2 threads) to 1513.68% (ordered, 1 thread). Startup and monitor
+initialization are outside the timed interval. These measurements apply only to
+this machine, build, and synthetic workload; they are not universal performance
+characteristics.
+
+## Presentation frontend
+
+An interactive project presentation is available in `frontend/`. From the
+project root, serve it with:
+
+```sh
+python3 -m http.server 8080 --directory frontend
+```
+
+Then open `http://localhost:8080`. The browser demonstration explains the
+algorithm and visualizes audited data; it does not execute `LD_PRELOAD` or C
+programs in the browser.
 
 ## Monitor a program
 
@@ -109,11 +123,6 @@ static executables and cross-process synchronization remain unsupported.
 Fork with active monitor state, signal-handler use, asynchronous cancellation,
 and dynamically unloading an active monitor are unsupported. See the architecture
 for logging cancellation and process-exit limitations.
-
-The readable project directory is `runtime-deadlock-predictor`. The Windows
-Desktop shortcut **Runtime Deadlock Predictor** opens it. Locked remnants of the
-old generated thread directory were retained; use the readable directory for
-all further builds and edits.
 
 See [architecture](docs/ARCHITECTURE.md), the historical
 [Phase 3 report](docs/PHASE3_VERIFICATION.md), and the current
