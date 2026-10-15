@@ -1,0 +1,21 @@
+# Build artifacts
+build/
+*.o
+*.so
+*.a
+
+# Test/bench binaries (compiled into build/ by convention)
+tests/unit/test_*
+tests/integration/t0*
+bench/bench_*
+!tests/**/*.c
+!bench/*.c
+
+# Logs and editor noise
+*.log
+*.out
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+*~
