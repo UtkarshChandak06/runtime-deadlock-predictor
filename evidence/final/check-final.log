@@ -1,0 +1,187 @@
+bash scripts/check_final.sh
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+Deadlock Sentinel - Phase 1
+Worker thread 1 started
+Worker thread 2 started
+Both threads completed successfully
+PASS: both workers printed once and the program exited successfully.
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+bash scripts/check_phase2.sh
+make[2]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[2]: Nothing to be done for 'banking-build'.
+make[2]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+PASS: 20 safe + 20 unsafe runs; balances, totals, nested orders, completion
+PASS: invalid inputs, insufficient funds, overflow, exact limits, lock release
+PASS: invalid CLI arguments and direct-launch guard
+PASS: SIGINT parent interruption leaves no fixture
+PASS: SIGTERM parent interruption leaves no fixture
+INITIAL account1=100000 account2=100000 total=200000
+MODE controlled-deadlock: parent harness must terminate this process
+HELD worker=1 account=1
+HELD worker=2 account=2
+REQUEST worker=2 held=2 wanted=1
+REQUEST worker=1 held=1 wanted=2
+WAIT_EVIDENCE tasks=3 wchan=futex_do_wait,futex_do_wait,futex_do_wait
+Controlled test: expected deadlock reached
+Child process terminated by test harness; reaped; process group absent
+INITIAL account1=100000 account2=100000 total=200000
+MODE controlled-deadlock: parent harness must terminate this process
+HELD worker=1 account=1
+HELD worker=2 account=2
+REQUEST worker=2 held=2 wanted=1
+REQUEST worker=1 held=1 wanted=2
+WAIT_EVIDENCE tasks=3 wchan=futex_do_wait,futex_do_wait,futex_do_wait
+Controlled test: expected deadlock reached
+Child process terminated by test harness; reaped; process group absent
+INITIAL account1=100000 account2=100000 total=200000
+MODE controlled-deadlock: parent harness must terminate this process
+HELD worker=1 account=1
+HELD worker=2 account=2
+REQUEST worker=2 held=2 wanted=1
+REQUEST worker=1 held=1 wanted=2
+WAIT_EVIDENCE tasks=3 wchan=futex_do_wait,futex_do_wait,futex_do_wait
+Controlled test: expected deadlock reached
+Child process terminated by test harness; reaped; process group absent
+PASS: Phase 2 controlled workload checks
+make[2]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+Deadlock Sentinel - Phase 1
+Worker thread 1 started
+Worker thread 2 started
+Both threads completed successfully
+PASS: both workers printed once and the program exited successfully.
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+bash scripts/check_phase3.sh
+make[2]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[2]: Nothing to be done for 'analysis-tests'.
+make[2]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+PASS graph: directed BFS, full paths, duplicates, reset, identities, capacities
+PASS tracker: pending/success/failure, nested locks, recursion, release, isolation, limits
+PASS analyzer: banking event sequences, pre-request edges, failed calls, recursion, cycle diagnostics
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning
+PASS: Phase 3 unit suites and 20 repeated concurrent runs
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+bash scripts/check_phase4.sh
+make[2]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[2]: Nothing to be done for 'runtime-tests-build'.
+make[2]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+PASS banking transparency: 5 safe + 5 unsafe real preload runs, balances/exit codes preserved, only account locks observed
+PASS recursive depth, EDEADLK/EPERM preservation, failed-operation state, errno transparency
+PASS duplicate suppression, address generations, concurrent JSON framing, separate TLS/thread exit, deferred cancellation
+PASS explicit unknown-kind policy, unsupported robust warning, graph/identity capacity incompleteness
+PASS unsupported trylock gap is explicit; EOWNERDEAD preserved and not mislabeled as ordinary lock failure
+PASS disablement, invalid configuration, dedicated FD/pipe/stderr, broken/full pipe preservation
+PASS monitored deadlock: two held/opposite requests, full cycle before timeout, three futex waits; killed/reaped/group absent
+PASS monitored deadlock: two held/opposite requests, full cycle before timeout, three futex waits; killed/reaped/group absent
+PASS monitored harness SIGINT: child reaped, process group absent
+PASS monitored harness SIGTERM: child reaped, process group absent
+PASS Phase 4: real runtime integration checks; every child reaped and process group absent
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+bash scripts/check_phase5.sh
+make[2]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[2]: Nothing to be done for 'monitor-build'.
+make[2]: Nothing to be done for 'banking-build'.
+make[2]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+test_api_validation_and_local_boundary (test_backend.Integration.test_api_validation_and_local_boundary) ... Executing <Task pending name='Task-2' coro=<Server.serve() running at /mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel/backend/.venv/lib/python3.14/site-packages/uvicorn/server.py:90> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.14/asyncio/base_events.py:459> created at /usr/lib/python3.14/asyncio/tasks.py:395> took 0.200 seconds
+ok
+test_deadlock_late_snapshot_timeout_and_stop (test_backend.Integration.test_deadlock_late_snapshot_timeout_and_stop) ... REAL_DEADLOCK {"session_id": "fe2150a3-e9f6-4dd5-97d6-fe56e33bc6b0", "application_id": "banking_deadlock", "state": "timed_out", "created_at": "2026-10-26T14:34:25.519099Z", "started_at": "2026-10-26T14:34:25.613235Z", "ended_at": "2026-10-26T14:34:28.144331Z", "pid": 912, "exit_code": -9, "event_count": 12, "warning_count": 1, "invalid_records": 0, "c_monitor_complete": true, "ingestion_complete": false, "monitoring_complete": false, "history_truncated": false, "dropped_events": 0, "stdout": "INITIAL account1=100000 account2=100000 total=200000\nMODE controlled-deadlock: parent harness must terminate this process\nHELD worker=1 account=1\nHELD worker=2 account=2\nREQUEST worker=1 held=1 wanted=2\nREQUEST worker=2 held=2 wanted=1\n", "stderr": "", "stdout_truncated": false, "stderr_truncated": false, "error": null, "cursor": 16, "cleanup_verified": true, "controlled_deadlock_evidence": {"expected_timeout": true, "conflicting_requests_observed": true, "three_futex_waiters_observed": true, "c_warning_observed": true, "stdout_markers_observed": true, "fixture_verified": true, "scope": "controlled banking fixture only; historical cycles do not confirm deadlock"}}
+ok
+test_limits_history_shutdown_and_descriptor_cleanup (test_backend.Integration.test_limits_history_shutdown_and_descriptor_cleanup) ... ok
+test_missing_dependencies_empty_stream_and_launch_failure (test_backend.Integration.test_missing_dependencies_empty_stream_and_launch_failure) ... ok
+test_real_safe_unsafe_http_and_live_websockets (test_backend.Integration.test_real_safe_unsafe_http_and_live_websockets) ... REAL_API banking_safe {"session_id": "af9edb21-3895-48ab-ae44-e99ba8616067", "application_id": "banking_safe", "state": "completed", "created_at": "2026-10-26T14:34:29.682413Z", "started_at": "2026-10-26T14:34:30.230831Z", "ended_at": "2026-10-26T14:34:30.367300Z", "pid": 933, "exit_code": 0, "event_count": 22, "warning_count": 0, "invalid_records": 0, "c_monitor_complete": true, "ingestion_complete": true, "monitoring_complete": true, "history_truncated": false, "dropped_events": 0, "stdout": "INITIAL account1=100000 account2=100000 total=200000\nMODE safe: ascending account IDs\nACQUIRED worker=2 account=1\nACQUIRED worker=2 account=2\nTRANSFER worker=2 from=2 to=1 cents=15000\nRELEASED worker=2 account=2\nRELEASED worker=2 account=1\nACQUIRED worker=1 account=1\nACQUIRED worker=1 account=2\nTRANSFER worker=1 from=1 to=2 cents=10000\nRELEASED worker=1 account=2\nRELEASED worker=1 account=1\nFINAL account1=105000 account2=95000 total=200000\nVALIDATION PASS\n", "stderr": "", "stdout_truncated": false, "stderr_truncated": false, "error": null, "cursor": 25, "cleanup_verified": true, "controlled_deadlock_evidence": null}
+REAL_API banking_unsafe {"session_id": "4ec4bc7d-51bd-4b8f-9f13-d582f23bba06", "application_id": "banking_unsafe", "state": "completed", "created_at": "2026-10-26T14:34:30.655839Z", "started_at": "2026-10-26T14:34:31.168336Z", "ended_at": "2026-10-26T14:34:31.321004Z", "pid": 936, "exit_code": 0, "event_count": 23, "warning_count": 1, "invalid_records": 0, "c_monitor_complete": true, "ingestion_complete": true, "monitoring_complete": true, "history_truncated": false, "dropped_events": 0, "stdout": "INITIAL account1=100000 account2=100000 total=200000\nMODE unsafe: opposite orders, workers joined sequentially\nACQUIRED worker=1 account=1\nACQUIRED worker=1 account=2\nTRANSFER worker=1 from=1 to=2 cents=10000\nRELEASED worker=1 account=2\nRELEASED worker=1 account=1\nACQUIRED worker=2 account=2\nACQUIRED worker=2 account=1\nTRANSFER worker=2 from=2 to=1 cents=15000\nRELEASED worker=2 account=1\nRELEASED worker=2 account=2\nFINAL account1=105000 account2=95000 total=200000\nVALIDATION PASS\nBoth transactions completed without an actual deadlock; lock ordering is unsafe.\n", "stderr": "", "stdout_truncated": false, "stderr_truncated": false, "error": null, "cursor": 26, "cleanup_verified": true, "controlled_deadlock_evidence": null}
+ok
+test_real_server_shutdown_cleans_active_child (test_backend.Integration.test_real_server_shutdown_cleans_active_child) ... ok
+test_slow_live_client_queue_recovers_with_snapshot (test_backend.Integration.test_slow_live_client_queue_recovers_with_snapshot) ... ok
+test_ingestion_invalid_identity_and_output_limits (test_backend.Units.test_ingestion_invalid_identity_and_output_limits) ... ok
+test_parser_partial_multiple_and_empty (test_backend.Units.test_parser_partial_multiple_and_empty) ... ok
+test_parser_rejections_and_bounds (test_backend.Units.test_parser_rejections_and_bounds) ... ok
+test_projection_is_not_cycle_detector (test_backend.Units.test_projection_is_not_cycle_detector) ... ok
+test_slow_queue_is_bounded (test_backend.Units.test_slow_queue_is_bounded) ... ok
+test_cancelled_supervisor_is_terminal_and_reaped (test_final_reliability.FinalReliability.test_cancelled_supervisor_is_terminal_and_reaped) ... ok
+test_child_abnormal_exit_is_failed_not_completed (test_final_reliability.FinalReliability.test_child_abnormal_exit_is_failed_not_completed) ... ok
+test_new_backend_manager_has_no_old_sessions (test_final_reliability.FinalReliability.test_new_backend_manager_has_no_old_sessions) ... ok
+test_two_concurrent_slots_limit_and_repeated_runs (test_final_reliability.FinalReliability.test_two_concurrent_slots_limit_and_repeated_runs) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 10.134s
+
+OK
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+bash scripts/check_phase6.sh
+
+> deadlock-sentinel-dashboard@0.6.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 2114 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.62 kB │ gzip:   0.37 kB
+dist/assets/index-CUllp7FC.css   38.52 kB │ gzip:   8.61 kB
+dist/assets/index-gmPolIFs.js   461.50 kB │ gzip: 145.64 kB
+
+✓ built in 6.35s
+
+> deadlock-sentinel-dashboard@0.6.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.5 [39m[90m/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel/frontend[39m
+
+ [32m✓[39m tests/connection.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 232[2mms[22m[39m
+ [32m✓[39m tests/components.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[33m 577[2mms[22m[39m
+ [32m✓[39m tests/data.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m30 passed[39m[22m[90m (30)[39m
+[2m   Start at [22m 14:34:54
+[2m   Duration [22m 20.16s[2m (environment 70%, setup 15%, import 10%, tests 2%, transform 2%)[22m
+
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+python3 scripts/evaluate_detection.py
+PASS monitored deadlock: two held/opposite requests, full cycle before timeout, three futex waits; killed/reaped/group absent
+PASS detection matrix: 14 real runtime cases; evidence/detection/20261026T143514Z
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+make[1]: Entering directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+python3 scripts/check_phase6_e2e.py
+
+Running 3 tests using 1 worker
+
+(node:14908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\dashboard.spec.ts:3:1 › real C → FastAPI → browser: safe, unsafe, replay, bounded deadlock and reports (8.6s)
+  ok 2 e2e\dashboard.spec.ts:260:1 › unavailable backend and missing session show honest error states (1.1s)
+  ok 3 e2e\dashboard.spec.ts:271:1 › real session survives browser disconnect, reconnects, and UI stop reaps its child (4.8s)
+
+  3 passed (15.9s)
+make[1]: Leaving directory '/mnt/c/Users/utkar/OneDrive/Desktop/OS PROJECT/deadlock-sentinel'
+PASS final gate: all mandatory checks completed; benchmarks and sanitizers are separate targets.

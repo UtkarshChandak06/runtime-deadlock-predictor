@@ -1,0 +1,5 @@
+OBSERVED label=errorcheck tid=1637 address=0x5721f04b30a0
+SELF_LOCK result=35
+OBSERVED label=wrong_unlock tid=1638 address=0x5721f04b30a0
+WRONG_UNLOCK result=1
+FIXTURE PASS

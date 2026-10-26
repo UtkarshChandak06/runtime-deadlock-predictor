@@ -1,0 +1,2 @@
+# Keep Bash and Make files usable when edited on Windows.
+* text=auto eol=lf

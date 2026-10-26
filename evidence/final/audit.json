@@ -1,0 +1,39 @@
+{
+  "verified_at_utc": "2026-10-26T14:39:00.388213+00:00",
+  "loopback_ports_free": {
+    "8000": true,
+    "5173": true
+  },
+  "remaining_owned_processes": [],
+  "modified_preexisting_source_files": [
+    "frontend/src/styles.css",
+    "frontend/src/App.tsx",
+    "tests/test_runtime_mutex.c",
+    "frontend/src/api/types.ts",
+    "frontend/src/hooks/useSession.ts",
+    "frontend/src/lib/replay.ts",
+    "frontend/src/lib/stream.ts",
+    "frontend/src/components/Report.tsx",
+    "backend/app/session_manager.py"
+  ],
+  "monitor_engine_unchanged": true,
+  "screenshots": [
+    "alerts.png",
+    "beginner-help.png",
+    "deadlock-timeout.png",
+    "desktop-1920.png",
+    "graph.png",
+    "live-monitor.png",
+    "mobile-390.png",
+    "overview-empty.png",
+    "performance.png",
+    "reports.png",
+    "safe-completed.png",
+    "sessions-desktop.png",
+    "threads.png",
+    "timeline.png",
+    "unsafe-live-1366.png",
+    "unsafe-replay.png"
+  ],
+  "note": "Source manifest predates Phase 7; new files are separately listed in final documentation. No commit or publication performed."
+}

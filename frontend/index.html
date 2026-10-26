@@ -1,151 +1,17 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Interactive presentation of a runtime pthread deadlock predictor.">
-  <title>Runtime Deadlock Predictor</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="topbar">
-    <a class="brand" href="#top" aria-label="Runtime Deadlock Predictor home">
-      <span class="brand-mark" aria-hidden="true">RDP</span>
-      <span>Runtime Deadlock Predictor</span>
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#demo">Demo</a><a href="#architecture">Architecture</a><a href="#benchmarks">Evidence</a>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">PTHREAD RUNTIME ANALYSIS · LINUX / WSL</p>
-        <h1>See a deadlock pattern <em>before</em> it becomes a frozen program.</h1>
-        <p class="lede">A preloadable C monitor observes mutex acquisition order, builds a lock-order graph, and warns when a new edge closes a cycle.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#demo">Start the demonstration</a>
-          <a class="button secondary" href="#benchmarks">Inspect verified evidence</a>
-        </div>
-        <ul class="badges" aria-label="Project technologies">
-          <li>C</li><li>pthreads</li><li>LD_PRELOAD</li><li>Phase 6/7 verified</li>
-        </ul>
-      </div>
-      <div class="hero-visual reveal" aria-label="Animated lock-order graph preview">
-        <div class="radar-grid"></div>
-        <svg viewBox="0 0 520 420" role="img" aria-labelledby="heroGraphTitle">
-          <title id="heroGraphTitle">Cycle between mutex A and mutex B</title>
-          <defs><marker id="heroArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z"/></marker></defs>
-          <path class="preview-edge edge-blue" d="M150 210 C220 105 300 105 370 210" marker-end="url(#heroArrow)"/>
-          <path class="preview-edge edge-red" d="M370 250 C300 350 220 350 150 250" marker-end="url(#heroArrow)"/>
-          <circle class="preview-node" cx="120" cy="230" r="58"/><circle class="preview-node danger" cx="400" cy="230" r="58"/>
-          <text x="120" y="238">A</text><text x="400" y="238">B</text>
-        </svg>
-        <div class="signal"><span></span> CYCLE DETECTED · A → B → A</div>
-      </div>
-    </section>
-
-    <section class="section" id="demo">
-      <div class="section-heading reveal">
-        <p class="eyebrow">INTERACTIVE EXPLAINER</p>
-        <h2>Build the lock graph one step at a time.</h2>
-        <p>Choose a safe consistent order or create an inversion. This is a deterministic explanation of the algorithm—not a live browser execution.</p>
-      </div>
-      <div class="demo-grid reveal">
-        <article class="demo-panel">
-          <div class="panel-head">
-            <div><span class="kicker">Scenario</span><h3 id="scenario-title">Safe order</h3></div>
-            <span class="step-pill" id="step-pill">Step 0 / 4</span>
-          </div>
-          <div class="scenario-tabs" role="group" aria-label="Choose scenario">
-            <button class="tab active" data-scenario="safe" aria-pressed="true">Safe order</button>
-            <button class="tab" data-scenario="danger" aria-pressed="false">Dangerous order</button>
-          </div>
-          <div class="threads" aria-live="polite">
-            <div class="thread-card"><span>THREAD 1</span><code id="thread-one">lock(A) → lock(B)</code></div>
-            <div class="thread-card"><span>THREAD 2</span><code id="thread-two">lock(A) → lock(B)</code></div>
-          </div>
-          <div class="step-copy">
-            <span class="step-number" id="step-number">00</span>
-            <div><h4 id="step-title">Ready to observe</h4><p id="step-description">No lock-order dependencies have been recorded.</p></div>
-          </div>
-          <div class="controls">
-            <button class="button primary" id="next-step">Next step <span aria-hidden="true">→</span></button>
-            <button class="button secondary" id="reset-demo">Reset</button>
-          </div>
-        </article>
-
-        <article class="graph-panel">
-          <div class="graph-labels"><span><i class="dot blue"></i>Normal dependency</span><span><i class="dot red"></i>Cycle path</span></div>
-          <svg id="demo-graph" viewBox="0 0 600 430" role="img" aria-labelledby="demoGraphTitle demoGraphDesc">
-            <title id="demoGraphTitle">Interactive lock-order graph</title>
-            <desc id="demoGraphDesc">No dependencies recorded.</desc>
-            <defs><marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z"/></marker><marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z"/></marker></defs>
-            <g class="graph-grid"><path d="M50 80H550M50 160H550M50 240H550M50 320H550M100 40V390M200 40V390M300 40V390M400 40V390M500 40V390"/></g>
-            <path id="edge-ab" class="graph-edge" d="M210 190 C260 120 340 120 390 190" marker-end="url(#arrowBlue)"/>
-            <path id="edge-ba" class="graph-edge danger-edge" d="M390 245 C340 315 260 315 210 245" marker-end="url(#arrowRed)"/>
-            <g class="node" id="node-a"><circle cx="170" cy="218" r="64"/><text x="170" y="210">MUTEX</text><text class="node-letter" x="170" y="242">A</text></g>
-            <g class="node" id="node-b"><circle cx="430" cy="218" r="64"/><text x="430" y="210">MUTEX</text><text class="node-letter" x="430" y="242">B</text></g>
-          </svg>
-          <div class="graph-status safe" id="graph-status"><span class="status-icon">✓</span><div><strong>No cycle found</strong><small>The observed order is currently safe.</small></div></div>
-        </article>
-      </div>
-
-      <div class="terminal reveal" id="terminal" aria-live="polite">
-        <div class="terminal-bar"><span></span><span></span><span></span><p>monitor output · stderr</p></div>
-        <pre><code id="terminal-output"><span class="muted">$ LD_PRELOAD=./build/libdeadlock_monitor.so ./program</span>
-<span class="quiet">[monitor] quiet — no cycle has been observed</span></code></pre>
-      </div>
-    </section>
-
-    <section class="section architecture" id="architecture">
-      <div class="section-heading reveal"><p class="eyebrow">HOW IT WORKS</p><h2>Five focused parts. One observable decision.</h2><p>The monitor analyzes the requested edge before the real lock call, then forwards control to pthreads.</p></div>
-      <div class="pipeline reveal">
-        <article><span>01</span><code>hooks.c</code><h3>Intercept</h3><p>Wrap lock and unlock through <strong>LD_PRELOAD</strong>.</p></article>
-        <i aria-hidden="true">→</i><article><span>02</span><code>tracker.c</code><h3>Remember</h3><p>Track mutexes currently held by each thread.</p></article>
-        <i aria-hidden="true">→</i><article><span>03</span><code>graph.c</code><h3>Analyze</h3><p>Add order edges and run BFS for a return path.</p></article>
-        <i aria-hidden="true">→</i><article><span>04</span><code>report.c</code><h3>Explain</h3><p>Format the complete closing cycle and context.</p></article>
-        <i aria-hidden="true">→</i><article><span>05</span><code>log.c</code><h3>Deliver</h3><p>Queue bounded, non-interleaved warning records.</p></article>
-      </div>
-      <div class="callout reveal"><span class="callout-mark">!</span><div><strong>A cycle is evidence of risk—not proof of a live deadlock.</strong><p>Historical order can include sequentially impossible combinations, unsupported operations, or conservative self-cycle analysis.</p></div></div>
-    </section>
-
-    <section class="section evidence" id="benchmarks">
-      <div class="section-heading reveal"><p class="eyebrow">MEASURED EVIDENCE</p><h2>Performance, with the context left intact.</h2><p>Five samples per mode. Medians from the corrected audited run on WSL2; results are host-specific and synthetic.</p></div>
-      <div class="metric-strip reveal">
-        <div><span>13</span><small>workload/thread cases</small></div><div><span>130</span><small>measurement records</small></div><div><span>5×</span><small>samples per mode</small></div><div><span>0</span><small>calibration-capped cases</small></div>
-      </div>
-      <div class="benchmark-card reveal">
-        <div class="benchmark-controls">
-          <label>Workload<select id="workload-select"><option value="single">Single</option><option value="independent">Independent</option><option value="shared">Shared</option><option value="ordered">Ordered</option></select></label>
-          <label>Threads<select id="thread-select"></select></label>
-          <div class="source-tag">SOURCE · 20261015T224443+0530</div>
-        </div>
-        <div class="benchmark-main">
-          <div class="bars" aria-label="Median duration comparison">
-            <div class="bar-row"><div><span>Baseline</span><strong id="baseline-time">—</strong></div><div class="bar-track"><span class="bar baseline" id="baseline-bar"></span></div></div>
-            <div class="bar-row"><div><span>Monitored</span><strong id="monitored-time">—</strong></div><div class="bar-track"><span class="bar monitored" id="monitored-bar"></span></div></div>
-          </div>
-          <div class="overhead"><span>Measured overhead</span><strong id="overhead-value">—</strong><small id="difference-value">— absolute difference</small></div>
-        </div>
-        <div class="details" id="benchmark-details"></div>
-        <p class="data-warning" id="data-warning" hidden>⚠ This baseline median is below the 0.1 s target and may be more sensitive to system noise.</p>
-      </div>
-      <div class="test-grid reveal">
-        <article><span>PASS</span><h3>Regression</h3><p>Bare and preloaded execution.</p></article><article><span>PASS</span><h3>Diagnostics</h3><p>Cycles, capacity and output failures.</p></article><article><span>PASS</span><h3>Sanitizers</h3><p>TSan plus ASan/UBSan suites.</p></article><article><span>PASS</span><h3>Robustness</h3><p>Resolver faults and recovery paths.</p></article>
-      </div>
-    </section>
-
-    <section class="section limits" id="limits">
-      <div class="section-heading reveal"><p class="eyebrow">HONEST BOUNDARIES</p><h2>What this version does not monitor.</h2></div>
-      <div class="limit-list reveal"><span>pthread_mutex_trylock</span><span>timed locks</span><span>condition waits</span><span>static executables</span><span>cross-process locks</span><span>robust owner-death tracking</span></div>
-      <p class="limit-note reveal">The monitor is a focused runtime predictor for ordinary pthread mutex lock/unlock behavior. Unsupported paths can produce incomplete predictions.</p>
-    </section>
-  </main>
-
-  <footer><div><strong>Runtime Deadlock Predictor</strong><p>Interactive presentation · verified Phase 6/7 evidence</p></div><a href="#top">Back to top ↑</a></footer>
-  <script src="app.js" defer></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b101d" />
+    <meta
+      name="description"
+      content="Real runtime lock observations, C-reported cycle evidence, and recorded session replay."
+    />
+    <title>Deadlock Sentinel · Concurrency workspace</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

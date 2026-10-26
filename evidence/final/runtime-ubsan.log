@@ -1,0 +1,12 @@
+UBSAN_OPTIONS=halt_on_error=1 python3 tests/test_runtime.py --library ./build/libdeadlock_monitor_ubsan.so
+PASS banking transparency: 5 safe + 5 unsafe real preload runs, balances/exit codes preserved, only account locks observed
+PASS recursive depth, EDEADLK/EPERM preservation, failed-operation state, errno transparency
+PASS duplicate suppression, address generations, concurrent JSON framing, separate TLS/thread exit, deferred cancellation
+PASS explicit unknown-kind policy, unsupported robust warning, graph/identity capacity incompleteness
+PASS unsupported trylock gap is explicit; EOWNERDEAD preserved and not mislabeled as ordinary lock failure
+PASS disablement, invalid configuration, dedicated FD/pipe/stderr, broken/full pipe preservation
+PASS monitored deadlock: two held/opposite requests, full cycle before timeout, three futex waits; killed/reaped/group absent
+PASS monitored deadlock: two held/opposite requests, full cycle before timeout, three futex waits; killed/reaped/group absent
+PASS monitored harness SIGINT: child reaped, process group absent
+PASS monitored harness SIGTERM: child reaped, process group absent
+PASS Phase 4: real runtime integration checks; every child reaped and process group absent

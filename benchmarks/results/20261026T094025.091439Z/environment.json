@@ -1,0 +1,48 @@
+{
+  "date_utc": "2026-10-26T09:40:25.095781+00:00",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "cpu": "12th Gen Intel(R) Core(TM) i5-12450H",
+  "logical_cpus": 12,
+  "affinity_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+  "workload_flags": "-O2 -std=c11 -Wall -Wextra -Wpedantic -pthread",
+  "monitor_flags": "Makefile default -std=c11 -Wall -Wextra -Wpedantic -g -fPIC -pthread; no optimization flag",
+  "filesystem_note": "checkout under /mnt/c; temporary event sink on Linux /tmp; no fsync durability guarantee",
+  "binary_sha256": "a0615962a1f86079774135919586e78d64481da4d294a5a23f53ef0456cd08c1",
+  "monitor_sha256": "4a3599019e3ba6e13537bd863c94d6c39cdf8808858b39a838d0aae190cdf6af",
+  "source_sha256": "3d42b84f1faadf477e8c716a71e84f783275731559a18001c130ba6f98dab11f",
+  "configuration": {
+    "iterations": 20000,
+    "repetitions": 5,
+    "timeout": 30
+  },
+  "warmup_rounds": 1,
+  "seed": 7,
+  "clock": "C CLOCK_MONOTONIC; barrier release through joins; initialization excluded",
+  "wall_clock": "parent monotonic process start-to-reap, excluding post-run JSON validation",
+  "ordering": "seeded shuffled cases per round; modes rotate by round and case index",
+  "sink_policy": "full JSON formatting/analysis in both monitored modes; file validated after timing; /dev/null records unavailable",
+  "limitations": [
+    "No CPU pinning or frequency control",
+    "WSL shared host; short baselines are sensitive to scheduling",
+    "No FastAPI/browser timing included",
+    "No reduced-logging or analysis-only mode"
+  ],
+  "status": "complete",
+  "raw_rows": 144,
+  "summary_rows": 16
+}

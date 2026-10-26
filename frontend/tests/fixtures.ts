@@ -1,0 +1,110 @@
+// Explicit unit fixtures. Real C/browser integration is tested separately under e2e/.
+import type {
+  RuntimeEvent,
+  Session,
+  Snapshot,
+  Application,
+} from "../src/api/types";
+import { reconstruct } from "../src/lib/replay";
+export const event = (
+  sequence: number,
+  fields: Partial<RuntimeEvent> = {},
+): RuntimeEvent => ({
+  schema_version: 1,
+  session_event: "session_start",
+  timestamp_ns: 1000000 + sequence,
+  process_id: 100,
+  thread_id: 101,
+  thread_instance: 1,
+  sequence,
+  monitoring_complete: true,
+  ...fields,
+});
+export const events = [
+  event(1),
+  event(2, {
+    session_event: "lock_request",
+    lock_id: "lock_2",
+    held_locks: ["lock_1"],
+    held_depths: [1],
+    lock_kind: "normal",
+  }),
+  event(3, {
+    session_event: "lock_acquired",
+    lock_id: "lock_2",
+    held_locks: ["lock_1", "lock_2"],
+    held_depths: [1, 1],
+    return_code: 0,
+  }),
+  event(4, {
+    session_event: "lock_request",
+    thread_id: 102,
+    thread_instance: 2,
+    lock_id: "lock_1",
+    held_locks: ["lock_2"],
+    held_depths: [1],
+    lock_kind: "normal",
+  }),
+  event(5, {
+    session_event: "potential_lock_order_cycle",
+    thread_id: 102,
+    thread_instance: 2,
+    held_lock: "lock_2",
+    requested_lock: "lock_1",
+    closing_edge: ["lock_2", "lock_1"],
+    cycle: ["lock_1", "lock_2", "lock_1"],
+    graph_sequence: 2,
+  }),
+  event(6, { session_event: "session_end" }),
+];
+export const session: Session = {
+  session_id: "unit-session",
+  application_id: "banking_unsafe",
+  state: "completed",
+  created_at: "2026-10-26T00:00:00Z",
+  started_at: "2026-10-26T00:00:01Z",
+  ended_at: "2026-10-26T00:00:02Z",
+  pid: 100,
+  exit_code: 0,
+  event_count: events.length,
+  warning_count: 1,
+  invalid_records: 0,
+  c_monitor_complete: true,
+  ingestion_complete: true,
+  monitoring_complete: true,
+  history_truncated: false,
+  dropped_events: 0,
+  stdout: "UNIT FIXTURE stdout",
+  stderr: "",
+  stdout_truncated: false,
+  stderr_truncated: false,
+  error: null,
+  cursor: 9,
+  cleanup_verified: true,
+  controlled_deadlock_evidence: null,
+};
+export const items = events.map((event, i) => ({ index: i + 1, event }));
+export const snapshot: Snapshot = {
+  session,
+  events: {
+    items,
+    next_after: items.length,
+    oldest_available: 1,
+    total_received: items.length,
+    gap: false,
+    history_truncated: false,
+  },
+  ...reconstruct(items, items.length),
+  errors: [],
+};
+export const application: Application = {
+  application_id: "banking_unsafe",
+  display_name: "Unsafe unit fixture",
+  description: "Explicit fixture catalog entry",
+  scenario: "potential_cycle",
+  safe_to_run_normally: true,
+  bounded_supervision: false,
+  executable: "build/banking_unsafe",
+  available: true,
+  unavailable_reason: null,
+};

@@ -1,0 +1,3 @@
+gcc -std=c11 -Wall -Wextra -Wpedantic -g -pthread -Imonitor/include -fsanitize=thread -fno-omit-frame-pointer tests/test_analyzer_concurrent.c monitor/src/graph.c monitor/src/tracker.c monitor/src/analyzer.c -o build/tsan_analyzer_concurrent
+TSAN_OPTIONS=halt_on_error=1 timeout 30s ./build/tsan_analyzer_concurrent
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning

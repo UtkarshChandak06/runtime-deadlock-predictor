@@ -1,0 +1,266 @@
+﻿[
+    {
+        "path":  "frontend/src\\styles.css",
+        "sha256":  "4C6FE6AADE944C4097BEC582C946C48086ADD399E37EF030176F0F2018FD3FF4"
+    },
+    {
+        "path":  "examples\\basic\\hello_threads.c",
+        "sha256":  "0AA5271CE00D2FA726055637234DF7E1BE5F41E5E6C70F5FBD5C6838D400AF6F"
+    },
+    {
+        "path":  "frontend/src\\pages\\Sessions.tsx",
+        "sha256":  "D9C31F87EF5790B4BFB365A476BFE84EF0BD3C492894C61ADC52DDAD84B02D03"
+    },
+    {
+        "path":  "frontend/src\\pages\\Launcher.tsx",
+        "sha256":  "D7D8D424484CFD0F35390596937D49C0E7FF2798BA4C9068A96353A95C2C7082"
+    },
+    {
+        "path":  "frontend/src\\main.tsx",
+        "sha256":  "6C2CA5004122CDF590685261371A807FCAAAAC7E5F00F82CB74967D49817A79F"
+    },
+    {
+        "path":  "monitor\\src\\tracker.c",
+        "sha256":  "3DF7B79CEE20C58016801877BB22A9A665EC4D508EA7B1FBBC8699F7E614AD64"
+    },
+    {
+        "path":  "monitor\\src\\runtime.c",
+        "sha256":  "DBD6936880A410629F8ADD9BE58338A6D2A6F5B16A01F9100FFED1E07CC8F81F"
+    },
+    {
+        "path":  "monitor\\src\\hooks.c",
+        "sha256":  "98790561A4199585D460D4D4CCC4C94C769DFE8F1DC2CC6C123D56DF7BC60B47"
+    },
+    {
+        "path":  "monitor\\src\\graph.c",
+        "sha256":  "B46CBC0F65A30AA55DF27FCDAA34C3F472B95CFDD41483508381AA37348E6594"
+    },
+    {
+        "path":  "monitor\\src\\events.c",
+        "sha256":  "16B802367410911E2B1D5E925753343EC8D8F62776E7D25CC05026947E751307"
+    },
+    {
+        "path":  "monitor\\src\\analyzer.c",
+        "sha256":  "269BAC44E76DCA727B15D34D841C9ADA4F7016C596D7100916C182F3030F2871"
+    },
+    {
+        "path":  "examples\\banking\\unsafe.c",
+        "sha256":  "9ACB762F9A19AD3EC4532F45245D870945AC80E19FED7B19E58CADCD07694D54"
+    },
+    {
+        "path":  "examples\\banking\\safe.c",
+        "sha256":  "C648E178CC53CB0CFD5923106D444685C9A5FCDAB560476BBD53EE0A606667C5"
+    },
+    {
+        "path":  "examples\\banking\\deadlock.c",
+        "sha256":  "D17A0511B0AF84ABC76C2C3A210B63ABC989E54CE1BE74D49EE81D880D989299"
+    },
+    {
+        "path":  "examples\\banking\\banking.h",
+        "sha256":  "B2132B9BBD11C9E3795E81106FD06C4C0C05E6E3F4CD192E3F7A8D7B200755EB"
+    },
+    {
+        "path":  "examples\\banking\\banking.c",
+        "sha256":  "5FC3B456F1D37658A8B81F420191F45213CE1C4389E4D7983E7E4CC122559A3B"
+    },
+    {
+        "path":  "frontend/src\\App.tsx",
+        "sha256":  "EBB356918C3DD9FE75428DD431E92A0E6F21E8D3649A9FD4DD57592829C41857"
+    },
+    {
+        "path":  "tests\\test_tracker.c",
+        "sha256":  "2EB015942560200DBDA042A15CE501EF4FC5DF4C1FC823495A42E44666512C11"
+    },
+    {
+        "path":  "tests\\test_runtime_mutex.c",
+        "sha256":  "8E1B1290D481A2AED3D5AADADAFA92BD9B4F52D76C08C60B4015199C98B0F745"
+    },
+    {
+        "path":  "tests\\test_runtime.py",
+        "sha256":  "2CC2CE26D66584C03EF8CCFB0F1BF1A401849411FA8D3C38D1F6B4A1E3DC89C0"
+    },
+    {
+        "path":  "tests\\test_graph.c",
+        "sha256":  "020DFA17FE47C6E0B9687AAFCCC2806883DB68F2D785A4EAD64ACFDD07CD1641"
+    },
+    {
+        "path":  "tests\\test_banking_validation.c",
+        "sha256":  "D9D6FF9F9D296DFE032736C5D0B8E7347F28EA2B88931C67FF074AB33388214D"
+    },
+    {
+        "path":  "tests\\test_banking.py",
+        "sha256":  "F84856E68A16A9542C5DFF21204EF01238F45274BCE4BE972FC7F49E18049546"
+    },
+    {
+        "path":  "tests\\test_analyzer_concurrent.c",
+        "sha256":  "723874E21E6D58EC7E5FF17285A2304551E87AE6C1567593EB55934A7B403D18"
+    },
+    {
+        "path":  "tests\\test_analyzer.c",
+        "sha256":  "8B759B3BAA5C83612B690C303E6B6DFEE44AF70D393C8B71C5993354C5EA5A25"
+    },
+    {
+        "path":  "examples\\analysis\\graph_demo.c",
+        "sha256":  "1A34BDC166CC1007D57DCB1D132E29D086454A575CAD4F825A1CBB8517ABD798"
+    },
+    {
+        "path":  "tests\\analysis_test.h",
+        "sha256":  "ED052500A367908A12924AC34170933F05B0A7FFBA3C71666A3705E89E7F73F3"
+    },
+    {
+        "path":  "tests\\backend\\test_backend.py",
+        "sha256":  "2ABC938A1A68485F8A003BF663C5CEE7E393AB3816BD645BCE701D2AED5749F5"
+    },
+    {
+        "path":  "frontend/src\\api\\types.ts",
+        "sha256":  "76BF765501A3FF53AE5470B0D65C33C5DFFBDDD849DD77EC5A397BDC8979DB02"
+    },
+    {
+        "path":  "frontend/src\\api\\client.ts",
+        "sha256":  "0A62ECC69811D2C7CA10733E88C20273A413238005422C9BC963CBDD69418733"
+    },
+    {
+        "path":  "frontend/src\\hooks\\useSession.ts",
+        "sha256":  "5AEA254F9669E7AB63ECB18D89A107E2EE6591E7F112DE12F305B4AAF0D9D427"
+    },
+    {
+        "path":  "scripts\\check_phase1.sh",
+        "sha256":  "694D48FCF253118246295771B4B244D35243B3FEBD8D59EBD444F1D64E8ED879"
+    },
+    {
+        "path":  "scripts\\check_phase2.sh",
+        "sha256":  "0BD96BCC6D2BBE804BC3D92F5D2832B34939760D5D182E6926892B79799F5574"
+    },
+    {
+        "path":  "frontend/src\\lib\\replay.ts",
+        "sha256":  "150C926BE38D3382E8BBDB4242D58AA4C0168D22773EFD09FB816DF0DD5FBDB0"
+    },
+    {
+        "path":  "monitor\\include\\rdp\\analyzer.h",
+        "sha256":  "C7E68A3E0A267CA12FCBAD511056115537555FFEE1A1F59EDCF17D29EFE4081C"
+    },
+    {
+        "path":  "monitor\\include\\rdp\\events.h",
+        "sha256":  "88A87E2D6A3FC3D42E860BDE17DBC011A0395FB809809E794AB22880300D7708"
+    },
+    {
+        "path":  "frontend/src\\lib\\stream.ts",
+        "sha256":  "BFBD5F5D6B25988A83A2BA6E6A538AB1A168C8A9ACD66934E28D6A1C47C43412"
+    },
+    {
+        "path":  "frontend/src\\components\\Alerts.tsx",
+        "sha256":  "27438647761B8938F80097ADEE1671998F7A388E706339E0B3BDBC5F7D572E60"
+    },
+    {
+        "path":  "frontend/src\\components\\Common.tsx",
+        "sha256":  "50CD91E8DB99D0EA9947F4A74A891EB7C771AD386CB9DE9FACBD758A105A6129"
+    },
+    {
+        "path":  "scripts\\check_phase3.sh",
+        "sha256":  "C05AE77CA7C3476D430B3B352DD90AD9D6DFEA069D4644868A9876DC257B0C26"
+    },
+    {
+        "path":  "frontend/src\\components\\Timeline.tsx",
+        "sha256":  "4C7AB36AE319C78CA637A4901C2B8A812DFCDC88887A9E2E6F3FF08F642438E7"
+    },
+    {
+        "path":  "frontend/src\\components\\Threads.tsx",
+        "sha256":  "77388060C4600AED78D1147ED628AC7F463B959C20BD14F1DD4A9B8DBD44BF0C"
+    },
+    {
+        "path":  "frontend/src\\components\\Report.tsx",
+        "sha256":  "EFF945971BFDE163E18FE389C6E7B68F2895667619EAFFE8DD565D7D266EFE21"
+    },
+    {
+        "path":  "frontend/src\\components\\Replay.tsx",
+        "sha256":  "9FA9CC687AD63E256DF0E5015C7D978FDFECEDB065DF3E1198D07961E11A496A"
+    },
+    {
+        "path":  "frontend/src\\components\\LockGraph.tsx",
+        "sha256":  "87A3736A0650040A93B1BD0750259203264C584C51E1BCCC68D3083491F1938C"
+    },
+    {
+        "path":  "scripts\\check_phase6_e2e.py",
+        "sha256":  "E33C7687AC4FD8C57113A51126E92B63F0C8BACDE3E71B6F2B84D3BBE64D3198"
+    },
+    {
+        "path":  "scripts\\check_phase6.sh",
+        "sha256":  "2CA4FB3B82F0931C297FA2076BD03CE4BA81DAC647B95DF2EA4ACE33D170F681"
+    },
+    {
+        "path":  "scripts\\check_phase5.sh",
+        "sha256":  "537078FAC91927BDCD13CBF92FE5DD3555F9FD4F0DE86D9A9754EE6FDD87ABFB"
+    },
+    {
+        "path":  "scripts\\check_phase4.sh",
+        "sha256":  "FE1AEBFAF7DEDDA227ED1600C0CFBFD17DC8ACD6A0748232B7C769E97B66BCD2"
+    },
+    {
+        "path":  "scripts\\install_backend.py",
+        "sha256":  "FBD4316116391BA61ABD8E62D35880D072B4E94DA45FB058AC506756B6DE696A"
+    },
+    {
+        "path":  "scripts\\frontend.sh",
+        "sha256":  "43C08799850D3B645AAB629607D9125888E401CF91E8FC93E2A2267F68486BA9"
+    },
+    {
+        "path":  "scripts\\install_node.py",
+        "sha256":  "51B8D067CE680FDBCDE868CBA6761A28F7B208FCE4266C0075A7D1E3CBA384A2"
+    },
+    {
+        "path":  "scripts\\verify_phase5_regressions.sh",
+        "sha256":  "B5F10B1F7BAFE1FA8B4C32F69E18E28A8095EEFA349B49C288FE6D1F8789106B"
+    },
+    {
+        "path":  "backend/app\\main.py",
+        "sha256":  "7DDBFA01C2FCA014A40E69652D8386047FCC7ECE1D812DF7D0E10B8593B6F4C4"
+    },
+    {
+        "path":  "backend/app\\graph_projection.py",
+        "sha256":  "2CAF2AC2CF8AAAABA4FBD09274813728D5F37F6084AFD320235A0BFAC6C28C29"
+    },
+    {
+        "path":  "backend/app\\event_parser.py",
+        "sha256":  "BE239FE7D5CF0D59A2EBDF5EBFF1D2E783FEEA108D4B54295232165A548AC609"
+    },
+    {
+        "path":  "backend/app\\config.py",
+        "sha256":  "D538FE51C98F65617EE17185659D67C23BECFAC33B6286436E152517368AB28E"
+    },
+    {
+        "path":  "backend/app\\session_manager.py",
+        "sha256":  "A57CB64477FD21160BDE953AFF731EC4BE166FD77486068FE4E1626F109F4FEA"
+    },
+    {
+        "path":  "backend/app\\process_runner.py",
+        "sha256":  "55C1C192E8062E8DD03DE90E62ADC3F73AF4BB0B0243EA6D1E94A0BE1E5F152C"
+    },
+    {
+        "path":  "backend/app\\models.py",
+        "sha256":  "F194087D99E359F2324B191594211381246143CF401AA944E6AAB36D7BA1123E"
+    },
+    {
+        "path":  "backend/app\\websocket_manager.py",
+        "sha256":  "06EE7238FD4E29731D15F7AB5E88F685AE933F6CEF42E866EE97598E5E53B0CE"
+    },
+    {
+        "path":  "backend/app\\__init__.py",
+        "sha256":  "6B5052DE80178CDA46CC6F2A070BBAF74712C1FF7456D1DF46881BD93C5A397E"
+    },
+    {
+        "path":  "monitor\\include\\rdp\\runtime.h",
+        "sha256":  "346BCA85772D4EBB7F11B85B272CF083B427C4DA448B5F7B815EB5C77550460D"
+    },
+    {
+        "path":  "monitor\\include\\rdp\\graph.h",
+        "sha256":  "A8A1A40C968125E873DCA5A4218481B4E96CA75D966DB478D9BCB18F63F9E048"
+    },
+    {
+        "path":  "monitor\\include\\rdp\\tracker.h",
+        "sha256":  "F87D5120FF1061C268FBBAE721F835FD030C6BF64F0F1614E18FD88DF258C105"
+    },
+    {
+        "path":  "monitor\\include\\rdp\\types.h",
+        "sha256":  "83874BC7EE056C800E2A208E6BDAF6EC72116AA91C3C908A66D99675B72F9070"
+    }
+]

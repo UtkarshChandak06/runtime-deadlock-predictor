@@ -1,0 +1,15 @@
+scenario,expected_warnings,observed_warnings,expected_c_incomplete,observed_c_incomplete,observed_events,cycle_length,outcome,cleanup_verified,result
+consistent_order,0,0,False,False,22,0,completed,True,PASS
+sequential_inversion,1,1,False,False,23,3,completed,True,PASS
+three_lock_cycle,1,1,False,False,28,4,completed,True,PASS
+eight_lock_cycle,1,1,False,False,68,9,completed,True,PASS
+controlled_deadlock,1,1,False,False,12,3,bounded_actual_deadlock_verified,True,PASS
+recursive_valid,0,0,False,False,11,0,completed,True,PASS
+unknown_static_normal,0,0,False,False,8,0,completed,True,PASS
+unknown_static_recursive,1,1,True,True,13,2,completed,True,PASS
+duplicate_closing_edge,1,1,False,False,68,3,completed,True,PASS
+failed_errorcheck_operations,1,1,False,False,14,2,completed,True,PASS
+graph_capacity,0,0,True,True,169,0,completed,True,PASS
+identity_capacity,0,0,True,True,132,0,completed,True,PASS
+unsupported_trylock,0,0,True,True,9,0,completed,True,PASS
+unsupported_robust,0,0,True,True,9,0,completed,True,PASS

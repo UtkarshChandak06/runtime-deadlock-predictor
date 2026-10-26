@@ -1,0 +1,15 @@
+bash scripts/frontend.sh run build
+
+> deadlock-sentinel-dashboard@0.6.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 2114 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.62 kB │ gzip:   0.37 kB
+dist/assets/index-CUllp7FC.css   38.52 kB │ gzip:   8.61 kB
+dist/assets/index-gmPolIFs.js   461.50 kB │ gzip: 145.64 kB
+
+✓ built in 6.63s

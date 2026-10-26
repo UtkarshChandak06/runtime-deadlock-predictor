@@ -1,0 +1,50 @@
+#include "analysis_test.h"
+int main(void)
+{
+    RdpTracker t = {0}, other = {0}; RdpSnapshot s;
+    CHECK(rdp_tracker_snapshot(&t, &s) == RDP_UNINITIALIZED);
+    CHECK(rdp_tracker_init(&t, 0, 1, 1) == RDP_INVALID);
+    tracker_init(&t, 101); tracker_init(&other, 202);
+    CHECK(rdp_tracker_request(&t, 0, RDP_NORMAL, &s) == RDP_INVALID);
+    CHECK(rdp_tracker_request(&t, 1, (RdpLockKind)99, &s) == RDP_INVALID);
+    OK(rdp_tracker_request(&t, 1, RDP_NORMAL, &s)); CHECK(s.count == 0 && s.pending == 1);
+    CHECK(rdp_tracker_request(&t, 2, RDP_NORMAL, &s) == RDP_BUSY);
+    CHECK(rdp_tracker_acquired(&t, 2, 0) == RDP_STATE);
+    OK(rdp_tracker_acquired(&t, 1, EBUSY));
+    OK(rdp_tracker_snapshot(&t, &s)); CHECK(s.count == 0 && s.pending == 0);
+    tracked_acquire(&t, 1, RDP_NORMAL); tracked_acquire(&t, 2, RDP_RECURSIVE);
+    tracked_acquire(&t, 2, RDP_RECURSIVE);
+    OK(rdp_tracker_snapshot(&t, &s)); CHECK(s.count == 2 && s.held[1].depth == 2);
+    CHECK(rdp_tracker_request(&t, 2, RDP_NORMAL, &s) == RDP_STATE);
+    OK(rdp_tracker_released(&t, 2, EPERM));
+    OK(rdp_tracker_snapshot(&t, &s)); CHECK(s.held[1].depth == 2);
+    OK(rdp_tracker_released(&t, 2, 0));
+    OK(rdp_tracker_snapshot(&t, &s)); CHECK(s.held[1].depth == 1);
+    OK(rdp_tracker_released(&t, 1, 0));
+    OK(rdp_tracker_snapshot(&t, &s)); CHECK(s.count == 1 && s.held[0].lock == 2);
+    CHECK(rdp_tracker_released(&t, 99, 0) == RDP_NOT_FOUND);
+    OK(rdp_tracker_snapshot(&other, &s)); CHECK(s.thread == 202 && s.count == 0);
+    OK(rdp_tracker_released(&t, 2, 0));
+    tracked_acquire(&t, 1, RDP_NORMAL); OK(rdp_tracker_released(&t, 1, 0));
+    OK(rdp_tracker_snapshot(&t, &s)); CHECK(s.count == 0);
+    OK(rdp_tracker_destroy(&t)); OK(rdp_tracker_destroy(&other));
+    OK(rdp_tracker_init(&t, 1, 1, 2)); tracked_acquire(&t, 1, RDP_NORMAL);
+    OK(rdp_tracker_request(&t, 2, RDP_NORMAL, &s));
+    CHECK(rdp_tracker_acquired(&t, 2, 0) == RDP_HELD_LIMIT);
+    CHECK(rdp_tracker_snapshot(&t, &s) == RDP_INCOMPLETE && !s.complete && s.count == 1);
+    CHECK(rdp_tracker_request(&t, 3, RDP_NORMAL, &s) == RDP_INCOMPLETE);
+    OK(rdp_tracker_destroy(&t));
+    OK(rdp_tracker_init(&t, 1, 2, 2)); tracked_acquire(&t, 1, RDP_RECURSIVE);
+    tracked_acquire(&t, 1, RDP_RECURSIVE);
+    OK(rdp_tracker_request(&t, 1, RDP_RECURSIVE, &s));
+    CHECK(rdp_tracker_acquired(&t, 1, 0) == RDP_DEPTH_LIMIT);
+    CHECK(rdp_tracker_snapshot(&t, &s) == RDP_INCOMPLETE && s.held[0].depth == 2);
+    OK(rdp_tracker_destroy(&t));
+    tracker_init(&t, 1); tracked_acquire(&t, 1, RDP_NORMAL);
+    OK(rdp_tracker_request(&t, 1, RDP_NORMAL, &s));
+    CHECK(rdp_tracker_acquired(&t, 1, 0) == RDP_STATE);
+    CHECK(rdp_tracker_snapshot(&t, &s) == RDP_INCOMPLETE && s.count == 1);
+    OK(rdp_tracker_destroy(&t));
+    puts("PASS tracker: pending/success/failure, nested locks, recursion, release, isolation, limits");
+    return 0;
+}

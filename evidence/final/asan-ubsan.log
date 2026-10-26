@@ -1,0 +1,4 @@
+PASS graph: directed BFS, full paths, duplicates, reset, identities, capacities
+PASS tracker: pending/success/failure, nested locks, recursion, release, isolation, limits
+PASS analyzer: banking event sequences, pre-request edges, failed calls, recursion, cycle diagnostics
+PASS concurrent: 8 workers x 100 event sequences, concurrent snapshots, one closing-edge warning

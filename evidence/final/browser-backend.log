@@ -1,0 +1,202 @@
+INFO:     Started server process [1231]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60804 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "OPTIONS /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "OPTIONS /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "POST /api/v1/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58210 - "OPTIONS /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "OPTIONS /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "OPTIONS /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "OPTIONS /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "OPTIONS /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58236 - "WebSocket /ws/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58224 - "OPTIONS /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "POST /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58248 - "GET /api/v1/sessions/1b31ec6b-b197-4c5f-96dd-c3ef926d1966 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "POST /api/v1/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58224 - "OPTIONS /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "OPTIONS /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "OPTIONS /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "OPTIONS /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "OPTIONS /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58260 - "WebSocket /ws/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58210 - "OPTIONS /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "POST /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58248 - "GET /api/v1/sessions/3adc7071-5557-422d-9602-7d5bf6f4d82e/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58248 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58248 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "POST /api/v1/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58210 - "OPTIONS /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "OPTIONS /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "OPTIONS /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "OPTIONS /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58232 - "OPTIONS /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58276 - "WebSocket /ws/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58194 - "OPTIONS /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "POST /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58210 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58224 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58230 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58248 - "GET /api/v1/sessions/422d24ea-9cfd-4491-9f76-763c2446c6b6 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58324 - "OPTIONS /api/v1/sessions/does-not-exist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58332 - "OPTIONS /api/v1/sessions/does-not-exist/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58334 - "OPTIONS /api/v1/sessions/does-not-exist/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58348 - "OPTIONS /api/v1/sessions/does-not-exist/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58324 - "OPTIONS /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58332 - "GET /api/v1/sessions/does-not-exist HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58334 - "GET /api/v1/sessions/does-not-exist/events?after=0&limit=1000 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58350 - "OPTIONS /api/v1/sessions/does-not-exist/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58352 - "OPTIONS /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58348 - "GET /api/v1/sessions/does-not-exist/graph HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58324 - "GET /api/v1/sessions/does-not-exist/threads HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58332 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58334 - "GET /api/v1/sessions/does-not-exist/alerts HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58350 - "GET /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "OPTIONS /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "OPTIONS /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "POST /api/v1/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58396 - "OPTIONS /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "OPTIONS /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "OPTIONS /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "OPTIONS /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58416 - "OPTIONS /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58426 - "WebSocket /ws/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58410 - "OPTIONS /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "POST /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58432 - "WebSocket /ws/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/2945f372-fe9a-4749-85f7-b250acd2ed48/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "POST /api/v1/sessions HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58410 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58416 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58448 - "WebSocket /ws/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58382 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "POST /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "OPTIONS /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "POST /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58416 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58416 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58456 - "WebSocket /ws/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58472 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58422 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58416 - "GET /api/v1/applications HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58488 - "WebSocket /ws/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:58366 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58416 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/events?after=0&limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58396 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/graph HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/threads HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58382 - "GET /api/v1/sessions/ae5a3345-b104-4d9a-baa8-3d041252a610/alerts HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [1231]
