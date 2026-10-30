@@ -1,0 +1,15 @@
+INITIAL account1=100000 account2=100000 total=200000
+MODE unsafe: opposite orders, workers joined sequentially
+ACQUIRED worker=1 account=1
+ACQUIRED worker=1 account=2
+TRANSFER worker=1 from=1 to=2 cents=10000
+RELEASED worker=1 account=2
+RELEASED worker=1 account=1
+ACQUIRED worker=2 account=2
+ACQUIRED worker=2 account=1
+TRANSFER worker=2 from=2 to=1 cents=15000
+RELEASED worker=2 account=1
+RELEASED worker=2 account=2
+FINAL account1=105000 account2=95000 total=200000
+VALIDATION PASS
+Both transactions completed without an actual deadlock; lock ordering is unsafe.

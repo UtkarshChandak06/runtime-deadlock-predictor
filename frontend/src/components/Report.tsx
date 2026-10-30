@@ -11,6 +11,9 @@ export function reportData(snapshot: Snapshot, application?: Application) {
       "Historical cycles are potential risks, not proof of current deadlock.",
       "Thread views are last observed.",
       "Saved benchmark measurements are separate from this session report.",
+      "Zero warnings do not prove safety. Unsupported operations can be invisible.",
+      "User-program same-process instrumentation is not tamper-proof.",
+      "Replay presents retained observations and does not execute the program.",
     ],
     ...snapshot,
     application: application ?? null,
@@ -56,7 +59,9 @@ export function Report({
           <dt>Application</dt>
           <dd>{s.application_id}</dd>
           <dt>Scenario</dt>
-          <dd>{application?.scenario || "Catalog metadata unavailable"}</dd>
+          <dd>{s.target_kind === "user_build" ? "User-supplied build; no expected result assigned" : application?.scenario || "Catalog metadata unavailable"}</dd>
+          <dt>Observed activity</dt><dd>{s.observation?.replaceAll("_", " ") || "See event history"}. Zero warnings do not prove safety.</dd>
+          <dt>Exit code</dt><dd>{s.exit_code ?? "Not exited"}</dd>
           <dt>Client continuity / history gap</dt>
           <dd>
             {snapshot.client_continuity_lost
@@ -112,6 +117,7 @@ export function Report({
             <Details value={s.controlled_deadlock_evidence} />
           </>
         )}
+        {s.build_metadata && <><h3>Exact source and build</h3><Details value={s.build_metadata} /></>}
         <p className="scope-note">
           Saved benchmark measurements are available in Performance. Historical
           cycles do not prove a current deadlock, and thread snapshots are not

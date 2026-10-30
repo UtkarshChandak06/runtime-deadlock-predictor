@@ -1427,3 +1427,21 @@ footer .subtle {
     grid-template-columns: 1fr;
   }
 }
+
+/* Editable source workspace; highlighted text and caret use identical metrics. */
+.your-code label { display: flex; flex-direction: column; gap: 7px; margin: 10px 0; }
+.workspace-controls { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.your-code input, .your-code select, .your-code textarea { max-width: 100%; padding: 10px; border: 1px solid #344155; border-radius: 6px; background: #101827; color: #eef3fa; }
+.file-tabs { display: flex; flex-wrap: wrap; gap: 5px; margin: 16px 0; }
+.file-tabs [aria-selected=true] { border-color: #65c7f7; color: #65c7f7; }
+.source-editor { position: relative; height: 440px; background: #0c1220; border: 1px solid #344155; border-radius: 8px; margin: 14px 0; overflow: hidden; }
+.source-editor pre, .source-editor textarea { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 16px; border: 0; font: 14px/1.6 Consolas, monospace; white-space: pre; overflow: auto; tab-size: 4; box-sizing: border-box; letter-spacing: normal; }
+.source-editor pre { pointer-events: none; color: #dbe6f2; background: transparent; }
+.source-editor textarea { color: transparent; caret-color: #fff; background: transparent; resize: none; -webkit-text-fill-color: transparent; }
+.source-editor textarea::selection { background: #3571a877; }
+.token-comment { color: #92a38e; }.token-string { color: #e8c68a; }.token-keyword { color: #c8a5ff; }.token-preproc { color: #76c8ee; }.token-number { color: #97d5b6; }
+.your-code .mono { overflow-wrap: anywhere; }.your-code pre { max-width: 100%; overflow: auto; }
+@media(max-width:760px) { .workspace-controls { grid-template-columns: 1fr; } }
+.your-code .panel { padding: 20px; }
+.your-code .panel-heading { padding: 0 0 16px; margin-bottom: 16px; }
+.your-code .console { margin: 12px 0; }

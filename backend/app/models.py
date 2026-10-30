@@ -25,6 +25,10 @@ class ApplicationView(BaseModel):
 
 
 class SessionView(BaseModel):
+    target_kind: str = 'example'
+    build_metadata: dict[str, Any] | None = None
+    mutex_activity: int = 0
+    observation: str = 'not_observed'
     session_id: str
     application_id: str
     state: State

@@ -12,8 +12,8 @@ export function Launcher({
 }) {
   return (
     <Panel
-      title="Run a monitored application"
-      subtitle="Choose a real pthread workload. Every observation comes from the C monitor."
+      title="Examples"
+      subtitle="Built-in workload descriptions are expectations. Analysis results come from each actual execution."
       action={
         <span className="tag">
           Approved catalog <ArrowUpRight size={13} />

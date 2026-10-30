@@ -1,6 +1,8 @@
 import type { Session } from "../api/types";
 import { terminal } from "../api/types";
 import { Badge, Completeness, Empty, Panel } from "../components/Common";
+import { request } from "../api/client";
+import { useState } from "react";
 export function Sessions({
   sessions,
   onSelect,
@@ -12,12 +14,14 @@ export function Sessions({
   onReplay: (id: string) => void;
   onRefresh: () => void;
 }) {
+  const [error,setError]=useState("");
   return (
     <Panel
       title="Retained sessions"
-      subtitle="In-memory backend history. Restarting the backend clears this list."
+      subtitle="Bounded retained history. The configured local workspace persists runs across restarts. Replay never launches a program."
       action={<button onClick={onRefresh}>Refresh sessions</button>}
     >
+      {error&&<p role="alert">{error}</p>}
       {sessions.length ? (
         <div className="table-scroll">
           <table>
@@ -73,6 +77,7 @@ export function Sessions({
                         >
                           Replay
                         </button>
+                        <button disabled={!terminal(s.state)} onClick={()=>{void request(`/sessions/${s.session_id}`,{method:"DELETE"}).then(onRefresh).catch(e=>setError(e.message));}}>Delete</button>
                       </div>
                     </td>
                   </tr>

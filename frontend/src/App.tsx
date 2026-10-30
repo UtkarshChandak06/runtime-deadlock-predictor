@@ -34,8 +34,10 @@ import { Launcher } from "./pages/Launcher";
 import { Sessions } from "./pages/Sessions";
 import { Performance } from "./pages/Performance";
 import { DemoHelp } from "./components/DemoHelp";
+import { YourCode } from "./pages/YourCode";
 const pages = [
   ["overview", "Overview", LayoutDashboard],
+  ["yourcode", "Your Code", FileText],
   ["live", "Live Monitor", Activity],
   ["graph", "Lock Graph", GitBranch],
   ["threads", "Thread Explorer", Users],
@@ -314,7 +316,7 @@ export default function App() {
               <RefreshCw size={16} /> Refresh data
             </button>
           </div>
-          <DemoHelp />
+          {page !== "yourcode" && s?.target_kind !== "user_build" && <DemoHelp />}
           {(error || live.error) && (
             <div className="error-banner" role="alert">
               <strong>Connection or operation needs attention</strong>
@@ -402,6 +404,10 @@ export default function App() {
             </Notice>
           )}
           <div className="stack">
+            {s?.observation === "no_relevant_mutex_activity" && <Notice>No relevant mutex activity observed. This does not establish safety or exclude unsupported synchronization.</Notice>}
+            <div hidden={page !== "yourcode"}>
+              <YourCode onRun={(session) => {setRevision(n=>n+1);navigate("live",session.session_id);}} />
+            </div>
             {(page === "overview" || page === "live") && (
               <>
                 {snapshot ? (
@@ -500,7 +506,7 @@ export default function App() {
                         </button>
                         <hr />
                         <div className="key-value">
-                          <span>Process ID</span>
+                          <span>{s!.target_kind === "user_build" ? "Host supervisor PID" : "Process ID"}</span>
                           <code>{s!.pid ?? "Not started"}</code>
                           <span>Exit code</span>
                           <code>{s!.exit_code ?? "Pending"}</code>
@@ -512,7 +518,7 @@ export default function App() {
                         <div className="help-note">
                           <CircleHelp size={18} />
                           <p>
-                            These programs finish quickly. Replay lets you study
+                            Replay lets you study
                             each real event at your own pace.
                           </p>
                         </div>

@@ -136,7 +136,7 @@ class Integration(unittest.IsolatedAsyncioTestCase):
 
     async def test_api_validation_and_local_boundary(self):
         self.assertEqual((await self.http('/health'))[1]['status'],'ok')
-        self.assertEqual(len((await self.http('/applications'))[1]),3)
+        self.assertEqual(len((await self.http('/applications'))[1]),len(CATALOG))
         self.assertEqual((await self.http('/sessions',{'application_id':'unknown'}))[0],404)
         self.assertEqual((await self.http('/sessions',{'application_id':'banking_safe','command':'sh'}))[0],422)
         self.assertEqual((await self.http('/sessions/missing'))[0],404)

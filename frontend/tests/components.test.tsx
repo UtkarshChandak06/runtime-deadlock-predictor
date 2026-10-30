@@ -158,14 +158,14 @@ describe("application shell", () => {
     render(<App />);
     await screen.findByText(application.display_name);
     const nav = screen.getByRole("navigation", { name: "Main navigation" });
-    expect(within(nav).getAllByRole("button")).toHaveLength(9);
+    expect(within(nav).getAllByRole("button")).toHaveLength(10);
     fireEvent.click(
       within(nav).getByRole("button", { name: "Sessions & Replay" }),
     );
     fireEvent(window, new HashChangeEvent("hashchange"));
     await screen.findByText("Retained sessions");
     expect(
-      screen.getByText(/Restarting the backend clears/),
+      screen.getByText(/persists runs across restarts/),
     ).toBeInTheDocument();
   });
   it("shows a backend error rather than fake metrics", async () => {

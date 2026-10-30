@@ -2,12 +2,13 @@ import asyncio
 from contextlib import asynccontextmanager
 import ipaddress
 from urllib.parse import urlsplit
-from fastapi import FastAPI, Query, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, Query, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from .config import Settings
 from .models import (SessionCreate, SessionView, ApplicationView, HealthView, EventPage,
                      ProjectionView, ThreadsView, AlertsView, TERMINAL)
 from .session_manager import SessionManager
+from .workspace import SourceInput, RunInput
 
 
 class LocalBoundary:
@@ -40,7 +41,9 @@ class LocalBoundary:
                         if message['type'] == 'http.disconnect':
                             return
                         body.extend(message.get('body', b''))
-                        if len(body) > 1024:
+                        path=scope.get('path','')
+                        limit = 1048576 if path.startswith('/api/v1/projects') else 131072 if path.startswith('/api/v1/builds') else 1024
+                        if len(body) > limit:
                             raise ValueError('body_limit')
                         if not message.get('more_body'):
                             break
@@ -63,11 +66,12 @@ def create_app(settings=None):
     manager = SessionManager(settings)
     @asynccontextmanager
     async def lifespan(app):
+        if manager.workspace:await manager.workspace.initialize()
         yield
         await manager.close()
     app = FastAPI(title='Deadlock Sentinel', version='5.0', lifespan=lifespan)
     app.state.manager = manager
-    app.add_middleware(CORSMiddleware, allow_origins=list(settings.origins), allow_methods=['GET','POST'], allow_headers=['Content-Type'])
+    app.add_middleware(CORSMiddleware, allow_origins=list(settings.origins), allow_methods=['GET','POST','DELETE'], allow_headers=['Content-Type'])
     app.add_middleware(LocalBoundary, origins=settings.origins)
 
     @app.get('/api/v1/health', response_model=HealthView)
@@ -77,6 +81,60 @@ def create_app(settings=None):
     @app.get('/api/v1/applications', response_model=list[ApplicationView])
     async def applications():
         return manager.catalog()
+
+    def workspace():
+        if manager.workspace is None:raise HTTPException(503,'workspace_not_configured')
+        return manager.workspace
+
+    @app.get('/api/v1/capabilities')
+    async def capabilities():
+        return dict(isolation=workspace().runner.status(),
+            supported=['Linux dynamically linked C', 'pthread_mutex_init', 'pthread_mutex_lock',
+                       'pthread_mutex_unlock', 'pthread_mutex_destroy', 'explicit recursive mutex depth'],
+            unsupported=['trylock and timedlock', 'condition variables and semaphores', 'read/write locks',
+                         'robust recovery and process-shared mutexes', 'static linking', 'fork/exec monitoring continuity',
+                         'asynchronous cancellation', 'source call-site resolution'],
+            limits=dict(files=8,source_bytes=131072,projects=10,revisions=50,builds=20,
+                        artifacts_bytes=67108864,arguments=16,stdin_bytes=8192,
+                        graph_nodes=32,graph_edges=128,held_locks=16,mutex_identities=64,
+                        retained_runs=settings.max_sessions,retained_events=settings.max_events),
+            interpretation='Zero warnings do not prove safety. No mutex requests is a distinct observation. '
+                           'Timeout is not proof of deadlock. Unsupported calls can be invisible; '
+                           'complete means complete only within the supported observation scope.')
+
+    @app.get('/api/v1/projects')
+    async def projects():return workspace().projects()
+
+    @app.post('/api/v1/projects',status_code=201)
+    async def project_create(request:SourceInput):return workspace().save(request)
+
+    @app.get('/api/v1/projects/{identifier}')
+    async def project_get(identifier:str):return workspace().project(identifier)
+
+    @app.post('/api/v1/projects/{identifier}/revisions')
+    async def revision_create(identifier:str,request:SourceInput):return workspace().save(request,identifier)
+
+    @app.delete('/api/v1/projects/{identifier}')
+    async def project_delete(identifier:str):
+        await workspace().delete_project(identifier);return {'deleted':True}
+
+    @app.post('/api/v1/projects/{identifier}/builds',status_code=202)
+    async def build_create(identifier:str):return workspace().build(identifier)
+
+    @app.get('/api/v1/builds')
+    async def builds():return workspace().store.all('build')
+
+    @app.get('/api/v1/builds/{identifier}')
+    async def build_get(identifier:str):return workspace().store.get('build',identifier)
+
+    @app.post('/api/v1/builds/{identifier}/stop')
+    async def build_stop(identifier:str):return await workspace().stop_build(identifier)
+
+    @app.post('/api/v1/builds/{identifier}/runs',response_model=SessionView,status_code=201)
+    async def user_run(identifier:str,request:RunInput):return workspace().run(identifier,request).view()
+
+    @app.delete('/api/v1/sessions/{identifier}')
+    async def delete_run(identifier:str):manager.delete(identifier);return {'deleted':True}
 
     @app.post('/api/v1/sessions', response_model=SessionView, status_code=201)
     async def create(request: SessionCreate):

@@ -1,0 +1,3 @@
+OBSERVED label=first tid=1812 address=0x5bc10678d0a0
+OBSERVED label=second tid=1812 address=0x5bc10678d0c8
+FIXTURE PASS

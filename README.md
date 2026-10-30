@@ -24,7 +24,29 @@ make backend-run
 make frontend-run
 ```
 
-Open **http://127.0.0.1:5173**; API documentation is at **http://127.0.0.1:8000/docs**. Stop each server with Ctrl+C. Use one backend worker; sessions are memory-only. Installation needs internet; installed demo assets work locally. See [backend setup](backend/README.md), [frontend setup](frontend/README.md) and [demo guide](docs/FINAL_DEMO_GUIDE.md).
+Open **http://127.0.0.1:5173**; API documentation is at **http://127.0.0.1:8000/docs**. Stop each server with Ctrl+C. Use one backend worker; the default local workspace persists bounded sessions, projects and builds. Installation needs internet; installed demo assets work locally. See [backend setup](backend/README.md), [frontend setup](frontend/README.md) and [demo guide](docs/FINAL_DEMO_GUIDE.md).
+
+## Your Code workspace
+
+Open **Your Code** to paste C source or upload up to eight `.c`/`.h` files. Save an
+immutable revision, **Build**, then **Run with Monitoring**. Inspect real output,
+graphs, warnings, timelines, replay and exports. Editing source makes its build
+stale. Compiler errors prevent running that build. **Stop build** and **Stop run**
+are separate actions. Built-in workloads remain under **Overview > Examples**.
+
+Compilation and execution require Bubblewrap plus a systemd user manager with
+cgroup v2 memory, pids and CPU controls. The backend probes the real isolation
+provider at startup and disables custom Build/Run when unavailable; it never
+falls back to host execution. The sandbox has no host network, capabilities or
+credentials, a read-only runtime, bounded scratch, and CPU/memory/process/output
+limits. This is a local shared-kernel boundary, not a remotely deployable service.
+
+See [Your Code setup and user manual](docs/YOUR_CODE.md) for exact prerequisites,
+API workflow, all resource/retention limits and the two submitted-source demos.
+The default `.workspace/` store is local and Git-ignored. Delete terminal sessions
+or projects explicitly to reclaim quota. Replay is recorded history, not execution.
+Source call-site resolution is currently unavailable. Same-process monitor events
+are validated but are not tamper-proof. Zero warnings never prove safety.
 
 ## Verify and measure
 
@@ -64,4 +86,4 @@ The [detection evaluation](docs/DETECTION_EVALUATION.md) compares expected and o
 - [Demo guide](docs/FINAL_DEMO_GUIDE.md), [presentation and viva](docs/FINAL_PRESENTATION_SCRIPT.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md), [limitations](docs/FINAL_LIMITATIONS.md)
 
-The monitor supports a bounded subset of Linux pthread behavior, does not prevent deadlocks and cannot prove arbitrary programs safe. Fixed capacities, unsupported APIs, synchronous logging, scheduling effects and memory-only sessions are explicit limits. No remote deployment, authentication, executable upload or arbitrary command launcher is provided.
+The monitor supports a bounded subset of Linux pthread behavior, does not prevent deadlocks and cannot prove arbitrary programs safe. Fixed capacities, unsupported APIs, synchronous logging, scheduling effects and bounded retention are explicit limits. Your Code accepts bounded C/H source uploads and uses a fail-closed Linux sandbox. No remote deployment, authentication, executable upload or arbitrary command launcher is provided.

@@ -34,7 +34,22 @@ build/banking_%: examples/banking/%.c examples/banking/banking.c examples/bankin
 build/test_banking_validation: tests/test_banking_validation.c examples/banking/banking.c examples/banking/banking.h | build
 	$(CC) $(CFLAGS) -pthread -Iexamples/banking tests/test_banking_validation.c examples/banking/banking.c -o $@
 
-banking-build: build/banking_safe build/banking_unsafe build/banking_deadlock build/test_banking_validation
+banking-build: build/banking_safe build/banking_unsafe build/banking_deadlock build/test_banking_validation network-build
+
+.PHONY: network-build monitor-network-safe monitor-network-cycle
+network-build: build/network_safe build/network_cycle
+
+build/network_safe: examples/banking/network.c | build
+	$(CC) $(CFLAGS) -pthread -DNETWORK_ORDERED=1 $< -o $@
+
+build/network_cycle: examples/banking/network.c | build
+	$(CC) $(CFLAGS) -pthread -DNETWORK_ORDERED=0 $< -o $@
+
+monitor-network-safe: monitor-build network-build
+	LD_PRELOAD=./build/libdeadlock_monitor.so ./build/network_safe
+
+monitor-network-cycle: monitor-build network-build
+	LD_PRELOAD=./build/libdeadlock_monitor.so ./build/network_cycle
 
 banking-safe: build/banking_safe
 	./build/banking_safe

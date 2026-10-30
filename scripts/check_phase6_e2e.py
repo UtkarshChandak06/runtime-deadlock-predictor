@@ -6,6 +6,7 @@ import socket
 import subprocess
 import time
 import urllib.request
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 os.chdir(ROOT)
@@ -24,12 +25,14 @@ logs = ROOT / 'build/phase6'
 logs.mkdir(parents=True, exist_ok=True)
 processes = []
 files = []
+workspace = tempfile.TemporaryDirectory(prefix='ds-browser-workspace-')
+environment = {**os.environ, 'DS_WORKSPACE_DIR': workspace.name}
 try:
     for name, command, cwd in [
         ('backend', [str(ROOT/'backend/.venv/bin/python'), '-m', 'uvicorn', 'app.main:app', '--app-dir', 'backend', '--host', '127.0.0.1', '--port', '8000', '--no-proxy-headers', '--ws', 'websockets-sansio', '--timeout-graceful-shutdown', '5'], ROOT),
         ('frontend', [str(node), 'node_modules/vite/bin/vite.js'], ROOT/'frontend')]:
         log = (logs/(name+'.log')).open('w'); files.append(log)
-        processes.append(subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, start_new_session=True))
+        processes.append(subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, start_new_session=True, env=environment))
     for url in ('http://127.0.0.1:8000/api/v1/health','http://127.0.0.1:5173'):
         for attempt in range(120):
             try:
@@ -56,3 +59,4 @@ finally:
             os.killpg(process.pid, signal.SIGKILL); process.wait()
     for file in files:
         file.close()
+    workspace.cleanup()

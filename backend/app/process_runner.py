@@ -23,6 +23,8 @@ class Application:
 
 
 CATALOG = {
+    "network_safe": Application("network_safe", "Six-account safe network", "Six concurrent workers; 18 transfers; global lock ordering", "safe"),
+    "network_cycle": Application("network_cycle", "Six-lock cycle", "Six sequential workers close a six-lock historical cycle; completes normally", "potential_cycle"),
     "banking_safe": Application("banking_safe", "Safe banking", "Consistent account-ID ordering", "safe"),
     "banking_unsafe": Application("banking_unsafe", "Unsafe lock ordering", "Sequential opposite orders; completes normally", "potential_cycle"),
     "banking_deadlock": Application("banking_deadlock", "Controlled deadlock", "Barrier fixture; always bounded to 2.5 seconds", "controlled_deadlock", True),

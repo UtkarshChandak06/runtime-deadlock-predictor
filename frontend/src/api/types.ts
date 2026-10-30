@@ -21,6 +21,10 @@ export interface Application {
   unavailable_reason: string | null;
 }
 export interface Session {
+  target_kind?: "example" | "user_build";
+  build_metadata?: Record<string, unknown> | null;
+  mutex_activity?: number;
+  observation?: string;
   session_id: string;
   application_id: string;
   state: Outcome;

@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 class Settings(BaseModel):
     model_config = ConfigDict(frozen=True)
     root: Path = ROOT
+    workspace_path: Path | None = None
     max_concurrent: int = Field(default=2, ge=1, le=8)
     max_sessions: int = Field(default=20, ge=1, le=100)
     max_events: int = Field(default=2000, ge=1, le=10000)
@@ -24,7 +25,7 @@ class Settings(BaseModel):
 
     @classmethod
     def from_env(cls):
-        values = {}
+        values = {'workspace_path': Path(os.environ.get('DS_WORKSPACE_DIR',str(ROOT / '.workspace')))}
         for field in ("max_concurrent", "max_sessions", "max_events", "max_output_bytes",
                       "max_line_bytes", "ws_queue", "max_ws_clients", "projection_limit"):
             if raw := os.getenv("DS_" + field.upper()):

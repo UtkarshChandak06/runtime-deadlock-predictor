@@ -95,7 +95,7 @@ that no events were missed.
 
 Sessions & Replay lists actual retained sessions with start/end, outcome, events,
 warnings and completeness. Refresh it to discover sessions created elsewhere.
-Inspect opens a session. Sessions live in backend memory and disappear on restart.
+Inspect opens a session. With the default local workspace, bounded sessions persist across restarts. Interrupted runs become stopped with incomplete monitoring. Use Delete for a terminal session.
 
 Reports includes actual stdout/stderr, session evidence, counts and limitations.
 Export JSON downloads that evidence; Print uses a print-friendly layout. Integers
@@ -107,3 +107,7 @@ list. If a program fails, inspect its error and captured stderr. 'Complete withi
 monitor scope' still excludes unsupported pthread operations; see EVENT_SCHEMA.md.
 Checking consistent lock ordering is general investigation guidance, not an
 automatically verified fix. The Performance section now shows saved measured C benchmarks with raw CSV downloads, separate from session reports. Expand Explain this demo for beginner guidance.
+
+## User-supplied C programs
+
+The **Your Code** page provides highlighted source tabs, C/H uploads, immutable builds, isolated execution, arguments/stdin, diagnostics and explicit deletion. See [Your Code setup and usage](YOUR_CODE.md) for the complete current user manual, supported scope and limits. Example descriptions are not generic analysis results.
